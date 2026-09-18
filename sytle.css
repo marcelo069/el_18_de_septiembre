@@ -133,13 +133,15 @@ main {
 
     position: absolute;
 
-    width: 82%;
+    width: min(600px, 84%);
 
-    left: 9%;
+    left: 50%;
 
-    top: 80px;
+    top: 50%;
 
-    min-height: 430px;
+    max-height: 90%;
+
+    overflow-y: auto;
 
     padding: 45px 55px;
 
@@ -168,10 +170,11 @@ main {
 
     /*
        Está escondida debajo
-       del sobre.
+       del sobre, y ligeramente
+       más pequeña / abajo.
     */
 
-    transform: translateY(150px);
+    transform: translate(-50%, -30%) scale(0.9);
 
     opacity: 0;
 
@@ -505,7 +508,7 @@ main {
 
 .sobre-container.abierto .carta {
 
-    transform: translateY(-310px);
+    transform: translate(-50%, -50%) scale(1);
 
     opacity: 1;
 
@@ -609,13 +612,11 @@ footer {
 
     .carta {
 
-        width: 88%;
-
-        left: 6%;
+        width: 90%;
 
         padding: 35px 25px;
 
-        min-height: 380px;
+        max-height: 85%;
     }
 
     .carta p {
@@ -628,11 +629,6 @@ footer {
     .carta h2 {
 
         font-size: 1.6rem;
-    }
-
-    .sobre-container.abierto .carta {
-
-        transform: translateY(-250px);
     }
 
     .sello-sobre {
