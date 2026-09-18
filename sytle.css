@@ -56,6 +56,13 @@ body {
     font-size: 27px;
 }
 
+.banderitas img {
+    height: 38px;
+    width: auto;
+
+    display: block;
+}
+
 
 /* =========================================
    ENCABEZADO
