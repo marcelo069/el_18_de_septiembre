@@ -10,10 +10,19 @@ body {
     font-family: Georgia, "Times New Roman", serif;
 
     background:
-        radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 60%),
-        linear-gradient(135deg, #0b3d2e, #145a32 45%, #8b1e1e);
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.08),
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            #0b3d2e,
+            #145a32 45%,
+            #8b1e1e
+        );
 
-    color: #fff;
+    color: white;
 
     display: flex;
     flex-direction: column;
@@ -39,52 +48,45 @@ body {
 
     border-bottom: 4px solid #f1c40f;
 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
 .banderitas span {
     font-size: 27px;
-
-    transform: rotate(
-        calc((var(--i, 1) - 1) * 3deg)
-    );
 }
 
 
 /* =========================================
-   HEADER
+   ENCABEZADO
 ========================================= */
 
 header {
     text-align: center;
 
     margin-top: 35px;
-    margin-bottom: 15px;
-
     padding: 0 20px;
 }
 
 header h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
 
-    color: #fff;
-
     text-shadow:
         3px 3px 0 #b71c1c,
-        5px 5px 10px rgba(0,0,0,0.4);
+        5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 header p {
     margin-top: 10px;
 
-    font-size: 1.1rem;
-
     color: #f9e7b2;
+
+    font-size: 1.1rem;
 }
 
 
 /* =========================================
-   CONTENEDOR PRINCIPAL
+   MAIN
 ========================================= */
 
 main {
@@ -94,31 +96,30 @@ main {
     flex-direction: column;
     align-items: center;
 
-    padding: 25px 20px 60px;
+    padding-top: 45px;
 }
 
 
 /* =========================================
-   SOBRE
+   CONTENEDOR DEL SOBRE
 ========================================= */
 
 .sobre-container {
 
     position: relative;
 
-    width: min(820px, 92vw);
-    height: 500px;
+    width: min(760px, 90vw);
+    height: 480px;
+
+    perspective: 1500px;
 
     cursor: pointer;
-
-    perspective: 1400px;
-
-    margin-top: 30px;
 }
 
 
 /* =========================================
    CARTA
+   TOTALMENTE OCULTA DENTRO DEL SOBRE
 ========================================= */
 
 .carta {
@@ -126,40 +127,58 @@ main {
     position: absolute;
 
     width: 82%;
-    min-height: 430px;
 
     left: 9%;
-    top: 35px;
+
+    top: 80px;
+
+    min-height: 430px;
 
     padding: 45px 55px;
 
     background:
         linear-gradient(
-            rgba(255,255,255,0.5),
+            rgba(255,255,255,0.4),
             rgba(255,255,255,0)
         ),
         #f5e6c8;
 
     color: #3b2618;
 
-    border: 2px solid #d2b48c;
+    border: 2px solid #c9a978;
 
     box-shadow:
         0 8px 20px rgba(0,0,0,0.35);
 
-    z-index: 2;
+    /*
+       MUY IMPORTANTE:
 
-    transform: translateY(90px);
+       La carta empieza detrás
+       del cuerpo del sobre.
+    */
+
+    z-index: 1;
+
+    /*
+       Está escondida debajo
+       del sobre.
+    */
+
+    transform: translateY(150px);
+
+    opacity: 0;
 
     transition:
-        transform 1.1s cubic-bezier(.2,.8,.2,1),
-        box-shadow 0.5s;
+        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.9s ease;
 
-    overflow: hidden;
+    pointer-events: none;
 }
 
 
-/* Textura del papel */
+/* =========================================
+   TEXTURA DEL PAPEL
+========================================= */
 
 .carta::before {
 
@@ -172,8 +191,8 @@ main {
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(80,50,20,0.025),
-            rgba(80,50,20,0.025) 1px,
+            rgba(80, 50, 20, 0.025),
+            rgba(80, 50, 20, 0.025) 1px,
             transparent 1px,
             transparent 4px
         );
@@ -182,7 +201,9 @@ main {
 }
 
 
-/* Título de la carta */
+/* =========================================
+   TÍTULO CARTA
+========================================= */
 
 .carta h2 {
 
@@ -190,11 +211,11 @@ main {
 
     text-align: center;
 
+    color: #8b1e1e;
+
     font-size: 2rem;
 
     margin-bottom: 25px;
-
-    color: #8b1e1e;
 }
 
 .carta h2::after {
@@ -203,15 +224,17 @@ main {
 
     display: block;
 
-    margin-top: 5px;
-
-    font-size: 18px;
+    margin-top: 6px;
 
     color: #b8860b;
+
+    font-size: 18px;
 }
 
 
-/* Párrafos */
+/* =========================================
+   TEXTO
+========================================= */
 
 .carta p {
 
@@ -221,21 +244,21 @@ main {
 
     line-height: 1.8;
 
-    margin-bottom: 18px;
-
     text-align: justify;
+
+    margin-bottom: 18px;
 }
 
 
-/* Firma */
+/* =========================================
+   FIRMA
+========================================= */
 
 .carta .firma {
 
     text-align: center;
 
     margin-top: 30px;
-
-    font-size: 1.15rem;
 
     color: #8b1e1e;
 }
@@ -253,7 +276,7 @@ main {
     bottom: 0;
 
     width: 100%;
-    height: 300px;
+    height: 280px;
 
     background:
         linear-gradient(
@@ -263,6 +286,11 @@ main {
         );
 
     border-radius: 8px;
+
+    /*
+       El sobre queda delante
+       de la carta.
+    */
 
     z-index: 5;
 
@@ -274,7 +302,7 @@ main {
 
 
 /* =========================================
-   SOLAPA
+   SOLAPA SUPERIOR
 ========================================= */
 
 .solapa {
@@ -285,12 +313,12 @@ main {
     left: 0;
 
     width: 100%;
-    height: 170px;
+    height: 175px;
 
     background:
         linear-gradient(
             135deg,
-            #d32f2f,
+            #d83232,
             #a51d1d
         );
 
@@ -302,70 +330,105 @@ main {
 
     transform-origin: top center;
 
+    /*
+       La solapa está delante
+       de todo.
+    */
+
+    z-index: 10;
+
     transition:
         transform 1s cubic-bezier(.2,.8,.2,1);
 
-    z-index: 8;
-
     filter:
-        drop-shadow(0 5px 5px rgba(0,0,0,0.25));
+        drop-shadow(
+            0 5px 5px rgba(0,0,0,0.3)
+        );
 }
 
 
 /* =========================================
-   ABRIR SOBRE
+   TRIÁNGULOS DEL SOBRE
 ========================================= */
 
-.sobre-container.abierto .solapa {
-
-    transform: rotateX(180deg);
-
-}
-
-
-/* La carta sale */
-
-.sobre-container.abierto .carta {
-
-    transform: translateY(-250px);
-
-    box-shadow:
-        0 15px 30px rgba(0,0,0,0.4);
-
-}
-
-
-/* =========================================
-   DETALLES DEL SOBRE
-========================================= */
-
-.detalle {
-
+.triangulo {
     position: absolute;
 
-    bottom: 35px;
-
-    font-size: 35px;
-
-    color: #f1c40f;
-
-    text-shadow:
-        2px 2px 3px rgba(0,0,0,0.35);
-
     z-index: 7;
+
+    pointer-events: none;
 }
 
-.detalle-izquierdo {
-    left: 35px;
+
+/* IZQUIERDA */
+
+.triangulo.izquierdo {
+
+    left: 0;
+    bottom: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background: #9f1d1d;
+
+    clip-path: polygon(
+        0 0,
+        100% 100%,
+        0 100%
+    );
 }
 
-.detalle-derecho {
-    right: 35px;
+
+/* DERECHA */
+
+.triangulo.derecho {
+
+    right: 0;
+    bottom: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background: #a82020;
+
+    clip-path: polygon(
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+
+/* INFERIOR */
+
+.triangulo.inferior {
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 72%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c12727,
+            #9e1d1d
+        );
+
+    clip-path: polygon(
+        0 100%,
+        50% 0,
+        100% 100%
+    );
+
+    z-index: 8;
 }
 
 
 /* =========================================
-   SELLO
+   SELLO DEL SOBRE
 ========================================= */
 
 .sello-sobre {
@@ -377,8 +440,8 @@ main {
 
     transform: translateX(-50%);
 
-    width: 70px;
-    height: 70px;
+    width: 72px;
+    height: 72px;
 
     border-radius: 50%;
 
@@ -387,32 +450,89 @@ main {
     border: 4px solid #f1c40f;
 
     display: flex;
-
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    font-size: 35px;
+    font-size: 34px;
 
     box-shadow:
-        0 4px 10px rgba(0,0,0,0.35);
+        0 5px 12px rgba(0,0,0,0.35);
 
-    z-index: 9;
+    z-index: 12;
 }
 
 
 /* =========================================
-   TEXTO DE INSTRUCCIÓN
+   SELLO DE LA CARTA
+========================================= */
+
+.sello-carta {
+
+    position: absolute;
+
+    top: 18px;
+    right: 25px;
+
+    font-size: 25px;
+}
+
+
+/* =========================================
+   SOBRE ABIERTO
+========================================= */
+
+/*
+   Primero se abre la solapa.
+*/
+
+.sobre-container.abierto .solapa {
+
+    transform: rotateX(180deg);
+}
+
+
+/*
+   Después la carta
+   sale desde dentro.
+*/
+
+.sobre-container.abierto .carta {
+
+    transform: translateY(-310px);
+
+    opacity: 1;
+
+    z-index: 6;
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,0.4);
+
+    pointer-events: auto;
+}
+
+
+/*
+   El sobre sigue delante
+   durante la animación.
+*/
+
+.sobre-container.abierto .sobre {
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   INSTRUCCIÓN
 ========================================= */
 
 .instruccion {
 
-    margin-top: 20px;
+    margin-top: 25px;
 
     color: #f9e7b2;
 
     font-size: 1rem;
-
-    opacity: 0.9;
 
     animation: respirar 2s infinite;
 }
@@ -420,7 +540,7 @@ main {
 @keyframes respirar {
 
     0%, 100% {
-        opacity: 0.6;
+        opacity: 0.55;
     }
 
     50% {
@@ -437,6 +557,8 @@ footer {
 
     width: 100%;
 
+    margin-top: auto;
+
     padding: 20px;
 
     text-align: center;
@@ -444,8 +566,6 @@ footer {
     background: rgba(0,0,0,0.25);
 
     color: #f9e7b2;
-
-    border-top: 2px solid rgba(255,255,255,0.15);
 }
 
 
@@ -464,22 +584,27 @@ footer {
     }
 
     .sobre-container {
+
+        width: 92vw;
+
         height: 430px;
     }
 
     .sobre {
-        height: 250px;
+
+        height: 245px;
     }
 
     .solapa {
-        height: 140px;
+
+        height: 145px;
     }
 
     .carta {
 
-        width: 90%;
+        width: 88%;
 
-        left: 5%;
+        left: 6%;
 
         padding: 35px 25px;
 
@@ -487,24 +612,27 @@ footer {
     }
 
     .carta p {
+
         font-size: 0.95rem;
+
+        line-height: 1.65;
     }
 
     .carta h2 {
+
         font-size: 1.6rem;
     }
 
     .sobre-container.abierto .carta {
-        transform: translateY(-220px);
-    }
 
-    .detalle {
-        font-size: 25px;
+        transform: translateY(-250px);
     }
 
     .sello-sobre {
+
         width: 60px;
         height: 60px;
+
         font-size: 28px;
     }
-}
+}   
